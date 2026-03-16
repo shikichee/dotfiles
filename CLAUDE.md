@@ -73,7 +73,7 @@ The `local/` directory is a special stow package for machine-specific or confide
 - `.oh-my-zsh/custom/custom.zsh`: Custom functions, aliases, and environment
   - `repo`: Navigate to repositories using fzf
   - `clone`: Clone and navigate using ghq
-  - `kclone`: Clone kamina-zzz repositories
+  - `kclone`: Clone shikichee repositories
   - `c`: Open current directory in Cursor
   - `cl`: Run claude
   - `vi`, `vim`, `v`: Aliases for nvim
@@ -83,7 +83,7 @@ The `local/` directory is a special stow package for machine-specific or confide
 
 **git/** - Git configuration
 - `.gitconfig`: Git settings
-  - User: kamina.dev1991@gmail.com / kamina-zzz
+  - User: shikichee (gitconfig.local で設定)
   - GHQ root: ~/src/
 
 **mise/** - Mise (runtime version manager) configuration
@@ -162,7 +162,7 @@ This repository uses ghq for repository management:
 - Repositories are cloned to `~/src/` (ghq root)
 - Use `clone <repo-url>` to clone and navigate
 - Use `repo` to fuzzy-find and navigate to existing repositories
-- Use `kclone <repo-name>` for kamina-zzz repositories
+- Use `kclone <repo-name>` for shikichee repositories
 
 ### Plan Files
 
