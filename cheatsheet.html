@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>dotfiles Cheatsheet</title>
+<style>
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #1a1a1a;
+    padding: 12mm;
+    max-width: 210mm;
+  }
+  h1 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 10px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .section {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 4px 8px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+  }
+  .tier1 .section-header { background: #c0392b; }
+  .tier2 .section-header { background: #e67e22; }
+  .tier3 .section-header { background: #2980b9; }
+  .tier4 .section-header { background: #8e44ad; }
+  .tier5 .section-header { background: #27ae60; }
+  .tip  .section-header { background: #555; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td, th {
+    padding: 3px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .cmd {
+    font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #c0392b;
+    white-space: nowrap;
+  }
+  .key {
+    font-family: "JetBrains Mono", "Fira Code", "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2980b9;
+    white-space: nowrap;
+  }
+  .desc {
+    font-size: 10.5px;
+    color: #333;
+  }
+  .tip-body {
+    padding: 6px 10px;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .tip-body li {
+    margin-left: 16px;
+    margin-bottom: 2px;
+  }
+  .highlight {
+    background: #fff3cd;
+    padding: 0 3px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+
+  @media print {
+    body { padding: 0; }
+    .section { border-color: #999; }
+  }
+</style>
+</head>
+<body>
+
+<h1>dotfiles Cheatsheet</h1>
+<p class="subtitle">kamina-zzz/dotfiles &mdash; GNU Stow | ghq root: ~/src/ | oh-my-zsh + starship + tmux + wezterm + neovim</p>
+
+<div class="grid">
+
+  <!-- Tier 1 -->
+  <div class="section tier1">
+    <div class="section-header">Tier 1: 毎日使う</div>
+    <table>
+      <tr><td class="cmd">repo</td><td class="desc">fzf でリポジトリ検索 → cd</td></tr>
+      <tr><td class="cmd">v</td><td class="desc">nvim 起動（vi, vim も同じ）</td></tr>
+      <tr><td class="cmd">c</td><td class="desc">カレントディレクトリを Cursor で開く</td></tr>
+      <tr><td class="cmd">cl</td><td class="desc">Claude Code 起動</td></tr>
+      <tr><td class="cmd">gst</td><td class="desc">git status</td></tr>
+      <tr><td class="cmd">gps</td><td class="desc">git push origin HEAD</td></tr>
+      <tr><td class="cmd">gco &lt;branch&gt;</td><td class="desc">git checkout</td></tr>
+      <tr><td class="cmd">ga &lt;file&gt;</td><td class="desc">git add</td></tr>
+      <tr><td class="cmd">gc</td><td class="desc">git commit</td></tr>
+    </table>
+  </div>
+
+  <!-- Tier 2 -->
+  <div class="section tier2">
+    <div class="section-header">Tier 2: 毎日〜数日に1回</div>
+    <table>
+      <tr><td class="cmd">gg &lt;keyword&gt;</td><td class="desc">git grep（大文字小文字無視）</td></tr>
+      <tr><td class="cmd">clone &lt;url&gt;</td><td class="desc">ghq get + cd を一発で</td></tr>
+      <tr><td class="cmd">kclone &lt;name&gt;</td><td class="desc">kamina-zzz/&lt;name&gt; をクローン</td></tr>
+      <tr><td class="cmd">gl</td><td class="desc">git pull</td></tr>
+      <tr><td class="cmd">gd</td><td class="desc">git diff</td></tr>
+      <tr><td class="cmd">glog</td><td class="desc">git log --oneline --graph</td></tr>
+      <tr><td class="cmd">gb</td><td class="desc">git branch</td></tr>
+      <tr><td class="cmd">gh co &lt;PR#&gt;</td><td class="desc">PR をローカルにチェックアウト</td></tr>
+    </table>
+  </div>
+
+  <!-- Tier 3: tmux -->
+  <div class="section tier3">
+    <div class="section-header">Tier 3: tmux（プレフィックス C-s）</div>
+    <table>
+      <tr><td class="key">C-s |</td><td class="desc">ペイン縦分割</td></tr>
+      <tr><td class="key">C-s -</td><td class="desc">ペイン横分割</td></tr>
+      <tr><td class="key">C-s h/j/k/l</td><td class="desc">ペイン移動</td></tr>
+      <tr><td class="key">C-s H/J/K/L</td><td class="desc">ペインリサイズ</td></tr>
+      <tr><td class="key">C-s r</td><td class="desc">設定リロード</td></tr>
+      <tr><td class="key">C-s [ → v → y</td><td class="desc">コピーモード → 選択 → ヤンク</td></tr>
+      <tr><td class="key">C-s C-p</td><td class="desc">ペースト</td></tr>
+    </table>
+  </div>
+
+  <!-- Tier 4: WezTerm -->
+  <div class="section tier4">
+    <div class="section-header">Tier 4: WezTerm</div>
+    <table>
+      <tr><td class="key">Cmd+p</td><td class="desc">コマンドパレット</td></tr>
+      <tr><td class="key">Ctrl+Shift+S → [</td><td class="desc">コピーモード（Leader キー）</td></tr>
+    </table>
+  </div>
+
+  <!-- Tier 5 -->
+  <div class="section tier5">
+    <div class="section-header">Tier 5: たまに使うツール</div>
+    <table>
+      <tr><td class="cmd">mise install</td><td class="desc">ランタイムインストール</td></tr>
+      <tr><td class="cmd">lazygit</td><td class="desc">TUI git クライアント</td></tr>
+      <tr><td class="cmd">tig</td><td class="desc">git ログビューア</td></tr>
+      <tr><td class="cmd">fzf</td><td class="desc">あいまい検索</td></tr>
+      <tr><td class="cmd">ghq list</td><td class="desc">管理中リポジトリ一覧</td></tr>
+    </table>
+  </div>
+
+  <!-- Tips -->
+  <div class="section tip">
+    <div class="section-header">ポイント</div>
+    <div class="tip-body">
+      <ul>
+        <li><span class="highlight">repo</span> と <span class="highlight">v</span> と <span class="highlight">c</span> で日常の8割カバー</li>
+        <li>oh-my-zsh git エイリアスは Tier 1-2 で十分</li>
+        <li>ローカル追加設定は <code>~/.local.zsh</code> に書く</li>
+        <li>ghq root は <code>~/src/</code></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

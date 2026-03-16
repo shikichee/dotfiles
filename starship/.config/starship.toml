@@ -1,9 +1,11 @@
 add_newline = false
 format = """
-[kamina ](green)[${directory} ](bold blue)${git_branch}${git_status}[\\$ ](white)
+[${directory} ](bold blue)${git_branch}${git_status}[\\$ ](white)
 """
 [directory]
-truncation_length = 4
+truncation_length = 3
+truncate_to_repo = false
+fish_style_pwd_dir_length = 2
 style = "bold blue"
 [git_branch]
 format = "[\\(](bold cyan)[$branch](bold red)"
