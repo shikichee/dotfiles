@@ -1,0 +1,29 @@
+[user]
+  useConfigOnly = true
+[core]
+  pager = less -X
+  excludesfile = ~/.gitignore_global
+[color]
+  ui = auto
+[diff]
+  compactionHeuristic = true
+[merge]
+  tool = vimdiff
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[http]
+  postBuffer = 157286400
+[ghq]
+  root = ~/src/
+[init]
+  defaultBranch = main
+[url "https://"]
+  insteadOf = git://
+[url "https://github.com/"]
+  insteadOf = ssh://git@github.com/
+  insteadOf = git@github.com:
+[include]
+  path = ~/.gitconfig.local
