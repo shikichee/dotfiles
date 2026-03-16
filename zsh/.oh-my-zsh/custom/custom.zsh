@@ -32,6 +32,8 @@ alias gps='git push origin HEAD'
 
 alias c='cursor .'
 alias cl='claude'
+alias clp='claude --permission-mode auto'
+alias clpd='claude-private --dangerously-skip-permissions'
 
 alias vi='nvim'
 alias vim='nvim'
