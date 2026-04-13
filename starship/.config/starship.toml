@@ -1,7 +1,12 @@
 add_newline = false
 format = """
-[${directory} ](bold blue)${git_branch}${git_status}[\\$ ](white)
+${custom.worktree}[${directory} ](bold blue)${git_branch}${git_status}[\\$ ](white)
 """
+
+[custom.worktree]
+command = "basename $(pwd | grep -o '.claude/worktrees/[^/]*' || echo '')"
+when = "pwd | grep -q '.claude/worktrees/'"
+format = "[🌳 $output ](bold green)"
 [directory]
 truncation_length = 3
 truncate_to_repo = false
